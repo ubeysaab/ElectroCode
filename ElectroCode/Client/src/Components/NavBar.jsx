@@ -3,12 +3,10 @@ import { Link } from "react-router-dom";
 
 // * Import
 import logo from "../assets/logo.png";
-import hum from "../assets/burger-menu.png";
-import close from "../assets/icons8-x-100.png";
-import uparrow from "../assets/up-arrow-svgrepo-com.svg";
-import downarrow from "../assets/icon-arrow-down.svg";
+import humImg from "../assets/burger-menu.png";
+import closeImg from "../assets/icons8-x-100.png";
 // TODO : BIR LINKE TIKLADIKTAN SONRA NAVBARI OTOMATIK KAPAT
-function NavBar() {
+function NavBar(props) {
   let [isOpen, setIsOpen] = useState(false);
   let [subOpen, setSubOpen] = useState(false);
   // console.log(isOpen)
@@ -33,20 +31,38 @@ function NavBar() {
         <img src={logo} alt="" />
       </div>
       <div className="navbar--ham">
-        <img onClick={handleMenuClick} src={isOpen ? close : hum} alt="" />
-        <ul className={isOpen ? "show navbar--list" : "hide navbar--list"}>
-          <li>
-            <Link to="/">Ana Sayfa</Link>
+        {props.width < 768 && (
+          <img
+            onClick={handleMenuClick}
+            src={isOpen ? closeImg : humImg}
+            alt=""
+          />
+        )}
+        <ul
+          className={
+            props.width > 768
+              ? "navbar--list"
+              : isOpen && props.width < 768
+              ? "show navbar--list"
+              : "hide navbar--list"
+          }
+        >
+          <li className="list--item">
+            <Link to="/">AnaSayfa</Link>
           </li>
           <li
-            className={subOpen ? "uparrow" : "downarrow"}
+            className={subOpen ? "uparrow list--item" : "downarrow list--item"}
             id="kurumsal"
             onClick={subClick}
           >
             <a href="#">Kurumsal</a>
             <ul
               className={
-                subOpen ? "sublist--navbar open" : "sublist--navbar close"
+                props.width > 768
+                  ? "sublist--navbar transitionProp "
+                  : subOpen
+                  ? "sublist--navbar open"
+                  : "sublist--navbar close"
               }
             >
               <li>
@@ -60,13 +76,13 @@ function NavBar() {
               </li>
             </ul>
           </li>
-          <li>
+          <li className="list--item">
             <Link to="/duyurular"> Duyurular </Link>
           </li>
-          <li>
+          <li className="list--item">
             <Link to="/projelerimiz">Projelerimiz</Link>
           </li>
-          <li>
+          <li className="list--item">
             <Link to="/iletisim">Iletisim</Link>
           </li>
         </ul>

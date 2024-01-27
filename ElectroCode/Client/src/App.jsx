@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.scss";
@@ -23,13 +23,22 @@ import Iletisim from "./pages/iletisim";
 
 
 function App() {
+    let[width,setWidth] = useState(window.innerWidth)
+   // Here for responsive design i will track width of screen for responsive design 
+    useEffect(()=>{
+      window.addEventListener("resize", ()=>{
+        setWidth(window.innerWidth)
+        console.log(width)
+      })
+      // for event listeners we don't neet to dependencies array
+    })
   
   
   // HERE : i will define layout for all page using Router layout 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout/>,
+      element: <Layout width ={width}/>,
       children :[
         {
           path:"/",

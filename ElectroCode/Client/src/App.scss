@@ -7,8 +7,9 @@ html {
 .app {
   $orange: #da702c;
   $darkBlue: #090d38;
-  $lightBlue: #419ed5;
+  $lightBlue: #115379;
   $silver: #b0b3bb;
+  $transitionTime: 0.5s;
 
   // $media-mobile: "only screen and (max-width : 600px)";
   $media-tablet: "only screen and (min-width : 768px)";
@@ -53,9 +54,14 @@ html {
           position: absolute;
           background-color: $darkBlue;
           font-size: 1.5rem;
-          line-height: 2rem;
-
-          //
+          line-height: 3rem;
+          @media #{$media-tablet} {
+            position: relative;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+          }
+          //hata satir canim boylesine ekledim
           .uparrow,
           .downarrow {
             position: relative;
@@ -64,7 +70,7 @@ html {
           .uparrow::after {
             position: absolute;
             top: 2%;
-            left:100px;
+            left: 100px;
 
             content: url("./assets/uparrow.png");
           }
@@ -77,13 +83,35 @@ html {
             content: url("./assets/downarrow.png");
           }
 
+          #kurumsal {
+            @media #{$media-tablet} {
+              &:hover .sublist--navbar {
+                visibility: visible;
+                opacity: 1;
+                left: 0;
+              }
+            }
+          }
+
           .sublist--navbar {
             list-style: none;
             padding: 30;
             text-align: left;
-            width: fit-content;
+            line-height: 2rem;
+            width: max-content;
+            position: relative;
             // background-color: $lightBlue;
             // burada transition add  open close arasinda
+            @media #{$media-tablet} {
+              position: absolute;
+              top: 100%;
+              background-color: $lightBlue;
+              padding: 10px 20px 10px 10px;
+              left: -1000px;
+              visibility: hidden;
+              opacity: 0;
+              transition-property: opacity, visibility, left;
+            }
           }
           .open {
             display: block;
@@ -91,16 +119,46 @@ html {
           }
           .close {
             display: none;
-           
           }
 
-          a,
-          li {
-            text-decoration: none;
-            color: $silver;
+          .list--item {
+            position: relative;
+            a {
+              text-decoration: none;
+              color: $silver;
+              &:hover {
+                color: $orange;
+              }
+            }
 
-            &:hover {
-              color: $orange;
+            &::before {
+              content: "";
+              position: absolute;
+              background-color: $orange;
+              width: 0;
+              height: 5%;
+              top: -10px;
+              left: 50%;
+              right: 50%;
+              transition-property: left, right, width;
+              transition-duration: $transitionTime;
+              transition-timing-function: ease-in-out;
+            }
+
+            @media #{$media-tablet} {
+              &:hover::before {
+                width: 100%;
+                right: 0;
+                left: 0;
+              }
+              a:hover {
+                color: $silver;
+              }
+              .sublist--navbar {
+                a:hover {
+                  color: $orange;
+                }
+              }
             }
           }
         }
@@ -108,16 +166,14 @@ html {
         .hide {
           left: -1000px;
           top: 0;
-
         }
         .show {
           inset: 95px 0;
         }
-      }
-      // - NavBar Responsive 
-      @media #{$media-tablet}{
-        // background-color:red;
-
+        .transitionProp {
+          transition-duration: $transitionTime;
+          transition-timing-function: ease-in-out;
+        }
       }
     }
   }
