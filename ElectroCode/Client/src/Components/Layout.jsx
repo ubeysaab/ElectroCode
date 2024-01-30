@@ -8,7 +8,7 @@ function Layout(props) {
     <>
       <NavBar width={props.width}/>
       <Outlet/>
-      <Footer/>
+      <Footer width={props.width}/>
     </>
   )
 }

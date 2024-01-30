@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // * Import
 import logo from "../assets/logo.png";
 import humImg from "../assets/burger-menu.png";
-import closeImg from "../assets/icons8-x-100.png";
+import closeImg from "../assets/icons8-close100.png";
 // TODO : BIR LINKE TIKLADIKTAN SONRA NAVBARI OTOMATIK KAPAT
 function NavBar(props) {
   let [isOpen, setIsOpen] = useState(false);
@@ -51,7 +51,7 @@ function NavBar(props) {
             <Link to="/">AnaSayfa</Link>
           </li>
           <li
-            className={subOpen ? "uparrow list--item" : "downarrow list--item"}
+            className={props.width>768?"list--item":subOpen ? "uparrow list--item" : "downarrow list--item"}
             id="kurumsal"
             onClick={subClick}
           >
