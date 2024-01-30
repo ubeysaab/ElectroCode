@@ -3,10 +3,15 @@ function home() {
   return (
     <main className="home">
       <section className="home--hero">
-        <pre className="hero--text">
-          Committed Software and Electronic Engineering Partner for your
-          Critical Solutions
-        </pre>
+        <div className="writer">
+          <div className="typing">
+            <span>uctan uca yazilim ekosistemi  </span>
+          </div>
+
+          <div className="hero--textBox">
+            <h3>Dunya gelecegi teknolojinin gelecegi</h3>
+          </div>
+        </div>
       </section>
     </main>
   );
