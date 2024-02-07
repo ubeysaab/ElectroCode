@@ -1,14 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
 *,
 ::before,
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
 }
 
 body {
   margin: 0;
   padding: 0;
+}
+
+section {
+  width: 100%;
+  height: 100dvh;
+  scroll-snap-align: end;
 }
 
 .app {
@@ -17,7 +25,7 @@ body {
   $lightBlue: #115379;
   $silver: #b0b3bb;
   $transitionTime: 0.5s;
-  $cuvuBlue:#092d63;
+  $cuvuBlue: #092d63;
 
   // $media-mobile: "only screen and (max-width : 600px)";
   $media-tablet: "only screen and (min-width : 768px)";
@@ -26,7 +34,6 @@ body {
     width: 100%;
     height: 100dvh;
     position: relative;
-    border: 2px solid red;
 
     // -__Navbar___
     .navbar {
@@ -40,11 +47,9 @@ body {
         width: 200px;
         max-height: 100px;
         transform: translateX(-30%);
-        // border: 1px solid green;
 
         img {
           width: 100%;
-          // border: 1px solid red;
         }
       }
 
@@ -79,7 +84,7 @@ body {
           .uparrow::after {
             position: absolute;
             top: 2%;
-            left: 100px;
+            left: 7rem;
 
             content: url("./assets/uparrow.png");
           }
@@ -88,7 +93,7 @@ body {
             position: absolute;
             top: 2%;
 
-            left: 70;
+            left: 7rem;
             content: url("./assets/downarrow.png");
           }
 
@@ -106,15 +111,22 @@ body {
             list-style: none;
             padding: 30;
             text-align: left;
-            line-height: 2rem;
+            line-height: 3rem;
             z-index: 4;
             width: max-content;
             position: relative;
+
+            a {
+              transition: padding 0.4s linear, color 0.4s linear;
+            }
+            //  TODO SUBLIST .NAVBAR .ITEM BURADA BULUNDUGUNDA TRANSITION EKLE
             // burada transition add  open close arasinda
             @media #{$media-tablet} {
               position: absolute;
               top: 100%;
-              background-color: $lightBlue;
+              background-color: $darkBlue;
+              border: 1px solid $silver;
+              border-radius: 15px;
               padding: 10px 20px 10px 10px;
               left: -1000px;
               visibility: hidden;
@@ -166,6 +178,8 @@ body {
               .sublist--navbar {
                 a:hover {
                   color: $orange;
+                  padding: 10px;
+                  //BURADA
                 }
               }
             }
@@ -276,13 +290,13 @@ body {
       // -Footer Finished
     }
 
-    //  -__Card__
-
-    // -__homePage__
+    // -__homePage__AnaSayfa
     .home--hero {
       position: relative;
       width: 100%;
-      height: 90dvh;
+      height: calc(100dvh - 130px);
+      // border: 1px solid red;
+
       background: url("./assets/backGround.webp"),
         linear-gradient(
           290deg,
@@ -290,11 +304,11 @@ body {
           rgba(9, 13, 56, 0.5) 66%
         );
       background-blend-mode: darken;
-      background-size: 100% 80%;
+      background-size: 100% 100%;
       background-repeat: no-repeat;
+
       display: flex;
       align-items: center;
-
 
       .writer {
         width: 100%;
@@ -305,7 +319,7 @@ body {
           position: relative;
           width: 200px;
           padding: 40px 0px 40px 40px;
-       
+
           left: 5%;
           // border: 1px solid $silver;
           border-radius: 15px;
@@ -313,110 +327,400 @@ body {
           top: calc(50% - 200px);
           z-index: 2;
           overflow: hidden;
-          
-  
-  
+
           &::after {
             content: "";
             position: absolute;
             width: 150px;
             height: 200%;
-           
             top: 30%;
-           
-             background: linear-gradient(0deg,#0D4275 33%,#28465C 100% );
+            background: linear-gradient(0deg, #0d4275 33%, #28465c 100%);
             border-radius: 11px;
             animation: borderRotate 5s linear infinite;
             z-index: 2;
-            
           }
-          &::before{
+          &::before {
             position: absolute;
             border-radius: 15px;
-            content:"";
+            content: "";
             width: 99;
             height: 98%;
-            inset: 4px ;
-           
+            inset: 4px;
             z-index: 1;
             background-color: #090d38;
           }
-  
+
           @keyframes borderRotate {
-  
-            0%{
+            0% {
               transform: rotate(0deg);
             }
-            100%{
+            100% {
               transform: rotate(360deg);
             }
-            
           }
-  
-  
-         
-  
-  
-  
-  
-  
-  
-  
-  
+
           h3 {
             color: #fff;
-            font-family: Poppins,sans-serif;
+            font-family: Poppins, sans-serif;
             font-size: 1.5rem;
             line-height: 2rem;
             font-weight: 700;
             text-transform: capitalize;
             position: relative;
             z-index: 3;
-  
           }
         }
-      
-  
-        .typing{
+
+        .typing {
           left: 5%;
           position: absolute;
           bottom: 5%;
           width: max-content;
           z-index: 3;
           padding-left: 40px;
-          span{
+          span {
             color: #dbdbf5;
             font-size: 1.2rem;
-            font-family: Poppins,sans-serif;
+            font-family: Poppins, sans-serif;
             text-transform: uppercase;
             display: inline-block;
             letter-spacing: 1px;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 700;
-            
             // Animation options very important
             white-space: nowrap;
             width: 100%;
             overflow: hidden;
-    
             border-right: 1px solid #dbdbf5;
             animation: typing 5s steps(29) infinite,
-            cursor .4s step-end infinite alternate;
-    
+              cursor 0.4s step-end infinite alternate;
           }
         }
-  
+
         @keyframes cursor {
-          50%{
+          50% {
             border-color: transparent;
           }
         }
-  
-        @keyframes typing{
-          from{
+
+        @keyframes typing {
+          from {
             width: 0;
           }
-  
+        }
+      }
+    }
+    // -Servisler
+    .services {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      @media #{$media-desktop} {
+        justify-content: center;
+        align-items: center;
+      }
+
+      @keyframes fade-out {
+        to {
+          opacity: 1;
+
+          scale: 1;
+        }
+      }
+
+      .services--text {
+        opacity: 0;
+        scale: 0.6;
+        margin: 0 auto;
+        text-align: center;
+        font-family: Poppins, sans-serif;
+        width: 80%;
+        position: relative;
+        animation: fade-out linear forwards;
+        animation-timeline: view();
+        animation-range: entry -100px;
+
+        // TODO ON SCROLL THE BEFORE SHOULD BE REMOVED WITH TRANSITION
+        &::after {
+          content: "";
+          position: absolute;
+          width: 48px;
+          height: 48px;
+          top: 100%;
+          left: calc(50% - 24px);
+          background-color: $cuvuBlue;
+          border-radius: 50%;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          top: 100%;
+          left: calc(50% - 25px);
+          background-color: white;
+          border-radius: 50%;
+          z-index: 2;
+
+          animation: pulling linear;
+          animation-timeline: view();
+          animation-range-start: 10px;
+        }
+        @keyframes pulling {
+          70% {
+            left: calc(50% + 29px);
+          }
+        }
+      }
+
+      //
+
+      .services--cards {
+        background-color: rgba(9, 13, 56, 1);
+        margin-top: 80px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        padding: 0 20px;
+
+        // TODO : ADD BACKGROUND USING BEFORE OR AFTER BEHIND THE SLIDER LOGO
+        &::before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          opacity: 0.6;
+          position: absolute;
+          background: url("./assets/lamp.png");
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: right bottom;
+          display: inline-block;
+        }
+
+        padding: 12px;
+        @media #{$media-desktop} {
+          width: 80%;
+          box-shadow: 0 0 0 100vw $darkBlue;
+          clip-path: inset(0 -100vw);
+        }
+
+        .serviceCard {
+          text-align: center;
+          padding: 20px 10px;
+          margin: 0 12px;
+
+          h4 {
+            color: $orange;
+
+            font-size: large;
+            font-weight: bold;
+          }
+          p {
+            color: whitesmoke;
+            font-weight: 900;
+          }
+
+          .serviceCard--icon {
+            font-size: 1.5rem;
+            color: $silver;
+          }
+        }
+      }
+    }
+    .services--explain {
+      height: 80dvh;
+      scroll-snap-align: center;
+      text-align: center;
+      img {
+        height: 300px;
+        max-width: 100%;
+        object-fit: cover;
+        filter: drop-shadow(20px 20px 5px 50px red);
+        object-position: center;
+        clip-path: polygon(0 0, 100% 16%, 72% 90%, 0% 100%);
+      }
+
+      h2,
+      p {
+        font-family: "Dosis", serif;
+      }
+
+      p {
+        padding: 0 20px;
+      }
+      @media #{$media-desktop} {
+        height: 100dvh;
+        display: flex;
+        align-items: center;
+
+        img {
+          display: block;
+
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        div {
+          padding: 0 10%;
+          p {
+            text-align: left;
+            font-size: 1.5rem;
+            line-height: 2rem;
+          }
+        }
+
+        &:nth-of-type(even) {
+          flex-direction: row-reverse;
+        }
+      }
+    }
+
+    // - ___Duyurular__
+    .duyurular {
+      scroll-snap-align: none;
+      .duyurular--title {
+        padding: 0 1.5rem;
+        font-family: 'Poppins',sans-serif;
+       .duyurular--title--text {
+        h2 {
+          color: $darkBlue;
+        }
+        
+        div {
+          width: 3rem;
+          height: 2px;
+          background-color: #090d38;
+          border-radius: 5px;
+
+          span {
+            width: 10px;
+            height: 2px;
+            outline: none;
+            border: none;
+            display: block;
+            border-radius: 5px;
+            background-color: white;
+            animation: going 1s ease-in-out forwards infinite;
+          }
+        }
+        
+        @keyframes going {
+          0% {
+            margin-inline: 0;
+          }
+          100% {
+            margin-inline: 100%;
+          }
+        }
+       }
+        button{
+          color: $silver;
+          background-color: $darkBlue;
+          border: none;
+          outline: none;
+          padding: 10px ;
+          width: max-content;
+          height:40px;
+          border-radius: 20px;
+          display: flex;
+          font-weight: 700;
+          justify-content: space-between;
+          align-items: center;
+          div{
+            color: $silver;
+            font-weight: 700;
+            width: 1.2rem;
+            height: 20px;
+            margin-left: 10px;
+            background-color: $cuvuBlue;
+            border-radius: 50%;
+            display: grid;
+            place-content: center;
+          }
+
+
+          &:hover {
+            background-color: $silver;
+            color: $darkBlue;
+          }
+
+          &:hover div{
+            background-color: $darkBlue
+          }
+        }
+
+        @media #{$media-tablet} {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          
+        }
+      }
+      .duyuru--cards {
+        width: 100%;
+        display: flex;
+        // border: 1px solid red;
+        padding: 12px;
+        @media #{$media-desktop} {
+          width: 80%;
+          margin: 0 auto;
+        }
+
+        .duyuruCart {
+          height: 370px;
+          text-align: center;
+          padding: 20px 10px;
+
+          .duyuruCart--imgUp {
+            width: 100%;
+            height: 40%;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          .duyuruCart--textDown {
+            // border: 2px solid yellow;
+            text-align: center;
+            padding: 0 10px 10px;
+            p {
+              margin-top: 0.5rem;
+              color: black;
+              -webkit-line-clamp: 2;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              -webkit-box-orient: vertical;
+              display: -webkit-box;
+            }
+
+            p,
+            h3 {
+              font-family: Poppins, sans-serif;
+            }
+
+            .duyuruCart--date {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              font-family: Poppins;
+
+              button {
+                outline: none;
+                border: none;
+                padding: 10px;
+                font-weight: 700;
+                background-color: $silver;
+                color: $darkBlue;
+                transition: box-shadow 0.4s linear;
+                &:hover {
+                  box-shadow: inset 5em 5em $darkBlue;
+                  color: $silver;
+                }
+              }
+            }
+          }
         }
       }
     }
