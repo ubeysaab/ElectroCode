@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Title() {
+function Title(props) {
   return (
     <div className='titleComponent'>
       
-      <span>Blog</span>
+      <span>{props.title}</span>
     </div>
   )
 }

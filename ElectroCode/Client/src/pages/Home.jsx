@@ -12,11 +12,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-// resimler
+// resimler ve listeler
 import bkendImg from "../assets/backend-development-languages-ISHIR.png";
-
 import frendImg from "../assets/images.avif";
-
+import data from "../../data.js"
 // components burada
 import duyurular from "../../data.js";
 import DuyuruCart from "../Components/DuyuruCart";
@@ -24,6 +23,12 @@ import ServiceCard from "../Components/ServiceCard";
 import ServiceAnlatma from "../Components/serviceAnlatma.jsx";
 import { Link } from "react-router-dom";
 function home() {
+
+
+
+  let cards = data.map(item =>{
+    return <DuyuruCart {...item}/>
+ })
   var settings = {
     dots: false,
     infinite: false,
@@ -116,13 +121,7 @@ function home() {
           />
         </Slider>
       </section>
-      {/* <section className="services--explain">
-        <img src={bkendImg} alt="" />
-        <h2></h2>
-        <p>
-          
-        </p>
-      </section> */}
+   
       <ServiceAnlatma
         img={bkendImg}
         title={"Backend Yazılım Geliştirme"}
@@ -159,15 +158,7 @@ Genel olarak arayüz geliştirmede kullandığımız teknolojiler React.js, Reac
           </Link>
         </div>
         <Slider {...settings} className="duyuru--cards">
-          <DuyuruCart />
-          <DuyuruCart />
-          <DuyuruCart />
-          <DuyuruCart />
-          <DuyuruCart />
-          <DuyuruCart />
-          <DuyuruCart />
-          <DuyuruCart />
-          <DuyuruCart />
+         {cards}
         </Slider>
       </section>
     </main>

@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
 *,
 ::before,
@@ -14,6 +14,12 @@ body {
   padding: 0;
 }
 
+button {
+  outline: none;
+  border: none;
+  padding: 10px;
+}
+
 section {
   width: 100%;
   height: 100dvh;
@@ -21,21 +27,159 @@ section {
   scroll-snap-align: end;
 }
 
+img,picture {
+  width: 100%;
+
+}
+
 a {
   text-decoration: none;
 }
 
 .app {
-  $orange: #da702c;
-  $darkBlue: #090d38;
+  $whiteBaseColor: #fff;
+  $darkBluePrimary: #090d38;
+  $orangeSecondary: #da702c;
   $lightBlue: #115379;
   $silver: #b0b3bb;
   $transitionTime: 0.5s;
   $cuvuBlue: #092d63;
+  $basepadding:10px;
 
   // $media-mobile: "only screen and (max-width : 600px)";
   $media-tablet: "only screen and (min-width : 768px)";
   $media-desktop: "only screen and (min-width : 1024px)";
+
+
+// Components 
+
+.readMore {
+  outline: none;
+  border: none;
+  padding: 10px;
+  font-weight: 700;
+  border-radius: 0.3rem;
+  background-color: $silver;
+  color: $darkBluePrimary;
+  transition: box-shadow 0.4s ease-in-out;
+  &:hover {
+    box-shadow: inset 5em 5em $darkBluePrimary;
+    color: $silver;
+  }
+}
+
+
+  // title component
+  .titleComponent {
+    width: 100dvw;
+    height: max(300px, 10rem);
+    // border: 1px solid red;
+    position: relative;
+    z-index: 10;
+
+    background: linear-gradient(-90deg, $darkBluePrimary, $cuvuBlue);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0% 100%);
+    h3 {
+      color: $silver;
+    }
+
+    span {
+      position: absolute;
+      z-index: 9;
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      display: grid;
+      place-content: center;
+      font-size: 5rem;
+      color: $silver;
+      font-family: "Bungee Shade", sans-serif;
+    }
+  }
+
+
+  // ProjeCard Component
+
+  .projectCard {
+    width: 90%;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 1rem;
+    gap: 1rem;
+    margin-block: 2rem;
+    .img {
+      margin-inline: auto;
+      position: relative;
+      width: 100%;
+      height: 200px;
+
+
+      img{
+        max-height: 100%;
+      }
+      &::after {
+           content:"";
+           width: 100%;
+           height: 100%;
+           position: absolute;
+           background-color:$cuvuBlue;
+           top: 20px;
+           left: -15px;
+           z-index: -10;
+       }
+
+    }
+    .content{
+
+    .link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .projectCard__button {
+      border: none;
+      color: $orangeSecondary;
+      border: 1px solid $orangeSecondary;
+      padding: 10px;
+      margin-bottom:1rem;
+      &:hover{
+        color: white;
+        background-color: $orangeSecondary;
+        cursor: pointer;
+      }
+    }
+      p{
+        width: 100%;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size:22.4px;
+        -webkit-box-orient: vertical;
+        margin:22.4px 0px;
+      }
+    }
+    @media #{$media-tablet} {
+      width: 70%;
+      flex-direction: row;
+      .img {
+        flex: 4;
+
+      }
+      .content{
+        flex: 6;
+      }
+    }
+  }
+
+
+
+
+
+
+
+
   .container {
     width: 100%;
     height: 100dvh;
@@ -44,8 +188,8 @@ a {
     // -__Navbar___
     .navbar {
       display: flex;
-      padding: 10px;
-      background-color: $darkBlue;
+      padding: $basepadding;
+      background-color: $darkBluePrimary;
       align-items: center;
       justify-content: space-between;
 
@@ -72,7 +216,7 @@ a {
           list-style: none;
           position: absolute;
           z-index: 20;
-          background-color: $darkBlue;
+          background-color: $darkBluePrimary;
           font-size: 1.5rem;
           line-height: 3rem;
           @media #{$media-tablet} {
@@ -130,10 +274,10 @@ a {
             @media #{$media-tablet} {
               position: absolute;
               top: 100%;
-              background-color: $darkBlue;
+              background-color: $darkBluePrimary;
               border: 1px solid $silver;
               border-radius: 15px;
-              padding: 10px 20px 10px 10px;
+              padding: $basepadding 20px $basepadding $basepadding;
               left: -1000px;
               visibility: hidden;
               opacity: 0;
@@ -154,14 +298,14 @@ a {
               text-decoration: none;
               color: $silver;
               &:hover {
-                color: $orange;
+                color: $orangeSecondary;
               }
             }
 
             &::before {
               content: "";
               position: absolute;
-              background-color: $orange;
+              background-color: $orangeSecondary;
               width: 0;
               height: 5%;
               top: -10px;
@@ -183,7 +327,7 @@ a {
               }
               .sublist--navbar {
                 a:hover {
-                  color: $orange;
+                  color: $orangeSecondary;
                   padding: 10px;
                   //BURADA
                 }
@@ -211,8 +355,8 @@ a {
 
     footer {
       width: 100%;
-      padding: 10px 0;
-      background-color: $darkBlue;
+      padding: $basepadding 0;
+      background-color: $darkBluePrimary;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -224,12 +368,10 @@ a {
         img {
           width: 100%;
           height: 100%;
-          // border: 1px solid yellow;
         }
       }
 
       .footer--phone {
-        // border: 1px solid green;
         text-align: center;
         p,
         b {
@@ -247,7 +389,6 @@ a {
       }
       .footer--socialMedia {
         text-align: center;
-        // border: 1px solid yellow;
 
         b {
           color: $silver;
@@ -507,7 +648,7 @@ a {
         padding: 12px;
         @media #{$media-desktop} {
           width: 80%;
-          box-shadow: 0 0 0 100vw $darkBlue;
+          box-shadow: 0 0 0 100vw $darkBluePrimary;
           clip-path: inset(0 -100vw);
         }
 
@@ -517,7 +658,7 @@ a {
           margin: 0 12px;
 
           h4 {
-            color: $orange;
+            color: $orangeSecondary;
 
             font-size: large;
             font-weight: bold;
@@ -581,13 +722,11 @@ a {
       }
     }
 
-
-
-    // Duyuru Cart 
+    // Duyuru Cart
     .duyuruCart {
       height: 370px;
       text-align: center;
-      padding: 20px 10px;
+      padding-block-end: 20px;
 
       .duyuruCart--imgUp {
         width: 100%;
@@ -595,6 +734,8 @@ a {
         img {
           width: 100%;
           height: 100%;
+          border-top-left-radius: 12px;
+          border-top-right-radius: 12px;
         }
       }
 
@@ -623,79 +764,63 @@ a {
           align-items: center;
           font-family: Poppins;
 
-          button {
-            outline: none;
-            border: none;
-            padding: 10px;
-            font-weight: 700;
-            background-color: $silver;
-            color: $darkBlue;
-            transition: box-shadow 0.4s linear;
-            &:hover {
-              box-shadow: inset 5em 5em $darkBlue;
-              color: $silver;
-            }
-          }
+          
         }
       }
     }
-
-
-
-
 
     // - ___Duyurular__
     .duyurular {
       scroll-snap-align: none;
       .duyurular--title {
         padding: 0 1.5rem;
-        font-family: 'Poppins',sans-serif;
-       .duyurular--title--text {
-        h2 {
-          color: $darkBlue;
-        }
-        
-        div {
-          width: 3rem;
-          height: 2px;
-          background-color: #090d38;
-          border-radius: 5px;
+        font-family: "Poppins", sans-serif;
+        .duyurular--title--text {
+          h2 {
+            color: $darkBluePrimary;
+          }
 
-          span {
-            width: 10px;
+          div {
+            width: 3rem;
             height: 2px;
-            outline: none;
-            border: none;
-            display: block;
+            background-color: #090d38;
             border-radius: 5px;
-            background-color: white;
-            animation: going 1s ease-in-out forwards infinite;
+
+            span {
+              width: 10px;
+              height: 2px;
+              outline: none;
+              border: none;
+              display: block;
+              border-radius: 5px;
+              background-color: white;
+              animation: going 1.5s ease-in-out forwards infinite;
+            }
+          }
+
+          @keyframes going {
+            0% {
+              margin-inline: 0;
+            }
+            100% {
+              margin-inline: 100%;
+            }
           }
         }
-        
-        @keyframes going {
-          0% {
-            margin-inline: 0;
-          }
-          100% {
-            margin-inline: 100%;
-          }
-        }
-       }
-        button{
+        button {
           color: $silver;
-          background-color: $darkBlue;
+          background-color: $darkBluePrimary;
           border: none;
           outline: none;
-          padding: 10px ;
+          padding: 10px;
           width: max-content;
-          height:40px;
+          height: 40px;
           border-radius: 20px;
           display: flex;
           font-weight: 700;
           justify-content: space-between;
           align-items: center;
-          div{
+          div {
             color: $silver;
             font-weight: 700;
             width: 1.2rem;
@@ -707,14 +832,13 @@ a {
             place-content: center;
           }
 
-
           &:hover {
             background-color: $silver;
-            color: $darkBlue;
+            color: $darkBluePrimary;
           }
 
-          &:hover div{
-            background-color: $darkBlue
+          &:hover div {
+            background-color: $darkBluePrimary;
           }
         }
 
@@ -722,76 +846,63 @@ a {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          
         }
       }
       .duyuru--cards {
         width: 100%;
         display: flex;
+
         // border: 1px solid red;
         padding: 12px;
+
+        .duyuruCart{
+          margin-right: 10px;
+        }
+
         @media #{$media-desktop} {
           width: 80%;
           margin: 0 auto;
         }
-
-
       }
     }
 
-    
-
-    // title component
-
-    .titleComponent{
-      width: 100dvw;
-      height: max(300px,10rem);
-      // border: 1px solid red;
-      position: relative;
-      z-index: 10;
-      
-      background:linear-gradient(-90deg,$darkBlue,$cuvuBlue);
-      // transform: skewY(-20deg);
-      clip-path:polygon(0% 0% , 100% 0% , 100% 80% , 0% 100%);
-      h3{
-        color: $silver;
-      }
-
-      span{
-        position: absolute;
-        z-index: 9;
-        width: 100%;
-        height: 100%;
-        // border: 1px solid red;
-        inset: 0;
-        display: grid;
-        place-content: center;
-        font-size: 5rem;
-        color: $silver;
-        font-family: 'Bungee Shade', sans-serif;
-      }
-    }
-    // - Duyurular Sayfasi 
+  
+    // - Duyurular Sayfasi
     //blogPage bir section
     .blogPage {
       scroll-snap-align: none;
       height: auto;
-      .grid--elements{
+      .grid--elements {
         padding: 10px;
         display: grid;
-        .duyuruCart{
+        .duyuruCart {
           border: 2px solid $lightBlue;
           border-radius: 12px;
+          margin-bottom: 10px;
         }
+      
+
+
         @media #{$media-tablet} {
-          
           overflow: hidden;
           gap: 30px;
-          grid-template-columns: repeat(3,1fr);
-          grid-template-rows: repeat(4,1fr);
-          
+          grid-template-columns: repeat(3, 1fr);
+          // grid-template-rows: repeat(4, 1fr);
         }
+
+
       }
+      .showMore {
+        padding: 0.8rem 3rem;
+        margin-bottom: 1rem;
+        display: block;
+        margin-inline: auto;
+      }
+      
     }
+  }
+
+  .projectsPage {
+    height: auto;
   }
 }
