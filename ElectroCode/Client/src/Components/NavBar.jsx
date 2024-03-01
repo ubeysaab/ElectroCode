@@ -43,15 +43,23 @@ function NavBar(props) {
             props.width > 768
               ? "navbar--list"
               : isOpen && props.width < 768
-              ? "show navbar--list"
-              : "hide navbar--list"
+                ? "show navbar--list"
+                : "hide navbar--list"
           }
         >
           <li className="list--item">
-            <Link to="/">AnaSayfa</Link>
+            <Link to="/" onClick={handleMenuClick}>
+              AnaSayfa
+            </Link>
           </li>
           <li
-            className={props.width>768?"list--item":subOpen ? "uparrow list--item" : "downarrow list--item"}
+            className={
+              props.width > 768
+                ? "list--item"
+                : subOpen
+                  ? "uparrow list--item"
+                  : "downarrow list--item"
+            }
             id="kurumsal"
             onClick={subClick}
           >
@@ -61,29 +69,42 @@ function NavBar(props) {
                 props.width > 768
                   ? "sublist--navbar transitionProp "
                   : subOpen
-                  ? "sublist--navbar open"
-                  : "sublist--navbar close"
+                    ? "sublist--navbar open"
+                    : "sublist--navbar close"
               }
             >
               <li>
-                <Link to="/vizyon">Vizyonumuz</Link>
+                <Link onClick={handleMenuClick} to="/vizyon">
+                  Vizyonumuz
+                </Link>
               </li>
               <li>
-                <Link to="/hakkimizda">Hakkimizda</Link>
+                <Link onClick={handleMenuClick} to="/hakkimizda">
+                  Hakkimizda
+                </Link>
               </li>
               <li>
-                <Link to="/isOrtaklarimiz">Is ortaklarimiz</Link>
+                <Link onClick={handleMenuClick} to="/isOrtaklarimiz">
+                  Is ortaklarimiz
+                </Link>
               </li>
             </ul>
           </li>
           <li className="list--item">
-            <Link to="/duyurular"> Duyurular </Link>
+            <Link onClick={handleMenuClick} to="/duyurular">
+              {" "}
+              Duyurular{" "}
+            </Link>
           </li>
           <li className="list--item">
-            <Link to="/projelerimiz">Projelerimiz</Link>
+            <Link onClick={handleMenuClick} to="/projelerimiz">
+              Projelerimiz
+            </Link>
           </li>
           <li className="list--item">
-            <Link to="/iletisim">Iletisim</Link>
+            <Link onClick={handleMenuClick} to="/iletisim">
+              Iletisim
+            </Link>
           </li>
         </ul>
       </div>
