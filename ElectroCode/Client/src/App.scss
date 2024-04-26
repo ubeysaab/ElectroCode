@@ -35,6 +35,10 @@ a {
   text-decoration: none;
 }
 
+
+
+
+
 .app {
   $whiteBaseColor: #fff;
   $darkBluePrimary: #090d38;
@@ -264,6 +268,42 @@ a {
 
   input:invalid:not(:focus) + .form__error {
     display: block;
+  }
+
+
+
+
+
+  // KurumsalBox
+
+  .kurumsalBox {
+    padding: 10px 20px;
+    margin-block: 1rem;
+    border: 1px solid $silver;
+    border-radius: 0.5rem;
+    background: url("./assets/we-provide-shape-1.png");
+    background-size: 150px 150px;
+    background-position: 98% 10px;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+
+   
+    
+    .icon{
+      font-size: 24px;
+      color: $darkBluePrimary;
+      transform: rotate(-15deg);
+    }
+    h2{
+      color: $darkBluePrimary;
+    }
+
+    p{
+      font-size: 1.5rem;
+      line-height: 2rem;
+      color: $darkBluePrimary;
+      font-weight: 700;
+    }
   }
 
   .container {
@@ -994,6 +1034,81 @@ a {
             align-items: start;
           }
         }
+      }
+    }
+
+    .kurumsalPage {
+      height: auto;
+      padding: 2rem;
+      // border: 2px solid red;
+      @media #{$media-tablet} {
+        display:flex;
+        align-items: start;
+        gap: 1rem;
+        min-height: calc(100dvh - 100px);
+
+        .kurumsalBox{
+          margin-block: 0;
+        }
+        
+      }
+      
+
+      
+      .kurumsal__nav {
+        display: grid;
+        gap: 1rem;
+        width: max-content;
+        
+        .kurumsal__link{
+          border-bottom: 4px solid $silver;
+          color:$darkBluePrimary;
+          display: block;
+          font-size: 1.25rem;
+          font-weight: 700;
+          padding: 20px 20px;
+          position: relative;
+          z-index: 8;
+          border-top-right-radius: 1rem;
+          border-bottom-right-radius: 1rem;
+          text-decoration: none;
+            transition: all 1.4s cubic-bezier(0.39, 0.58, 0.57, 1);
+          
+
+          // &::before{
+          //   content: "";
+          //   position:absolute;
+          //   width:4px;
+          //   height: var(--heigh,0);
+          //   background-color: $orangeSecondary;
+          //   top: 0;
+          //   left: 0;
+
+          // }
+
+          // &::after{
+          //   content: "";
+          //   position:absolute;
+          //   width:calc(100% - 4px);
+          //   height: var(--heigh,0);
+          //            
+          //   background-color: $darkBluePrimary;
+          //   right: 0;
+          //   bottom: 0;
+          //   z-index: -1;
+          //   transform-origin: center;
+          //   transition: all 1s ease-in;
+          // }
+        }
+
+        // .kurumsal__link--active{
+        //   background-color: $darkBluePrimary;
+        //   border-top-right-radius: 1rem;
+        //   border-bottom-right-radius: 1rem;
+        //   color: $orangeSecondary;
+
+          
+        // }
       }
     }
   }

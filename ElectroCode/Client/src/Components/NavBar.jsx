@@ -63,7 +63,7 @@ function NavBar(props) {
             id="kurumsal"
             onClick={subClick}
           >
-            <a href="#">Kurumsal</a>
+            <Link to={"/kurumsal"}>Kurumsal</Link>
             <ul
               className={
                 props.width > 768
@@ -74,17 +74,17 @@ function NavBar(props) {
               }
             >
               <li>
-                <Link onClick={handleMenuClick} to="/vizyon">
+                <Link onClick={handleMenuClick} to="/kurumsal">
                   Vizyonumuz
                 </Link>
               </li>
               <li>
-                <Link onClick={handleMenuClick} to="/hakkimizda">
-                  Hakkimizda
+                <Link onClick={handleMenuClick} to="/kurumsal/misyon">
+                  Miyson
                 </Link>
               </li>
               <li>
-                <Link onClick={handleMenuClick} to="/isOrtaklarimiz">
+                <Link onClick={handleMenuClick} to="/kurumsal/isOrtaklarimiz">
                   Is ortaklarimiz
                 </Link>
               </li>
